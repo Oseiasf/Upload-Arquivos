@@ -2,8 +2,8 @@
 
 	include_once('conexao.php');
 
-	// ini_set( 'display_errors', true );
-	// error_reporting( E_ALL );
+	 // ini_set( 'display_errors', true );
+	 // error_reporting( E_ALL );
 
 
 	if (isset($_POST['enviar-formulario'])) {
@@ -16,42 +16,27 @@
 			$pasta = "arquivo/";
 			$temporario = $_FILES['arquivo']['tmp_name'];
 			$nomeArquivo = $_POST['nomeArquivo'];
-			$recebeNome = explode(" ", $nomeArquivo);
-			$quantosNomes = count($recebeNome);
+			$novoNome = str_replace(" ", "_", $nomeArquivo);
 
-			for ($i=0; $i <= $quantosNomes; $i++) { 
-				$nomeAlterado = ''.$nomeAlterado.''.$recebeNome[$i]."_";
-			} return $nomeAlterado;
+			$caminho = $pasta.$novoNome.".".$extensao;
 
-			echo $nomeAlterado;
 
-		} else {
-			echo "deu ERO";
 		}
-	}	
-			
 
-			// $caminho = $pasta.$novoNome;
-
-			//var_dump( is_writable("arquivo/") ); //informe oque retornar desse dump
-  			//echo '<br />',$caminho;
-			//echo $novoNome;
-			//echo $caminho;
-			//var_dump($_FILES);
-
-/*			if (move_uploaded_file($temporario,$caminho)) {
+		if (move_uploaded_file($temporario, $caminho)) {
 
 				try{
 
-					$stmt = $con->prepare("insert into Arquivos (nome_trabalho, caminho_arquivo) values (?,?)");
-					$nomeAlterado;
+					$nomeArquivo;
 					$caminhoArquivo = $caminho;
 
-					$stmt->bindValue(1, $$nomeAlterado);
+					$stmt = $con->prepare("insert into Arquivos (nome_trabalho, caminho_arquivo) values (?,?);");
+
+					$stmt->bindValue(1, $$nomeArquivo);
 					$stmt->bindValue(2, $caminhoArquivo);
 
+					echo $stmt;
 					// $stmt->execute();
-					echo "$stmt";
 				
 				}catch(PDOException $e){
 						echo $e->getMessage();
@@ -62,19 +47,13 @@
 
 			
 			}else {
+
 				$mensagem = "Erro, não foi possivel fazer o upload";
-				
-			//echo "De ".$temporario." estou movendo para"." ".$pasta.$novoNome;
-			}
-		}else {
+		
+			}else {
 
 			$mensagem = "Formato inválido, por favor faça um upload de um arquivo em PDF";
-			// echo "Não existe";
+
 		 }
-
-		echo $mensagem;
-		// echo $extensao;
-
-		// var_dump($_FILES);
-	}*/
+	}
 ?>
