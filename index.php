@@ -10,7 +10,7 @@
             
 </head>
 <body>
-	<form style="margin-left:30%;margin-right:30%;margin-top:10%; background-color:#F4F6F6 ; padding:3%; border-radius:2%;" action="salvarArquivo.php" method="POST" enctype="multipart/form-data">
+	<form style="margin-left:30%;margin-right:30%;margin-top:10%; background-color:#F4F6F6 ; padding:3%; border-radius:2%;" action="salvar.php" method="POST" enctype="multipart/form-data">
 		
 <input name = "nomeArquivo" id="motivo" placeholder="Insira o nome do arquivo..." type="text">
 <div class="file-field input-field">
