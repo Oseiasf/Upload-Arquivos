@@ -12,9 +12,17 @@
 		$extensao = pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
 
 		if (in_array($extensao, $formatosPermitidos)) {
+			
 			$pasta = "arquivo/";
 			$temporario = $_FILES['arquivo']['tmp_name'];
-			$novoNome = $_POST['nomeArquivo2'].".$extensao";
+			$novoNome = $_POST['nomeArquivo'];
+			$recebeNome = explode(" ", $novoNome);
+			$quantosNomes = count($recebeNome);
+			for ($i=0; $i < $quantosNomes -1; $i++) { 
+				$nomeAlterado = $recebeNome[$i]."_"
+			} return $nomeAlterado;
+
+			.".$extensao";
 			$caminho = $pasta.$novoNome;
 
 			//var_dump( is_writable("arquivo/") ); //informe oque retornar desse dump
@@ -28,13 +36,14 @@
 				try{
 
 					$stmt = $con->prepare("insert into Arquivos (nome_trabalho, caminho_arquivo) values (?,?)");
-					$nomeArquivo = $_POST["nomeArquivo"];
+					$nomeAlterado;
 					$caminhoArquivo = $caminho;
 
-					$stmt->bindValue(1, $nomeArquivo);
+					$stmt->bindValue(1, $$nomeAlterado);
 					$stmt->bindValue(2, $caminhoArquivo);
 
-					$stmt->execute();
+					// $stmt->execute();
+					echo "$stmt";
 				
 				}catch(PDOException $e){
 						echo $e->getMessage();
