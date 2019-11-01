@@ -15,23 +15,31 @@
 			
 			$pasta = "arquivo/";
 			$temporario = $_FILES['arquivo']['tmp_name'];
-			$novoNome = $_POST['nomeArquivo'];
-			$recebeNome = explode(" ", $novoNome);
+			$nomeArquivo = $_POST['nomeArquivo'];
+			$recebeNome = explode(" ", $nomeArquivo);
 			$quantosNomes = count($recebeNome);
-			for ($i=0; $i < $quantosNomes -1; $i++) { 
-				$nomeAlterado = $recebeNome[$i]."_"
+
+			for ($i=0; $i <= $quantosNomes; $i++) { 
+				$nomeAlterado = ''.$nomeAlterado.''.$recebeNome[$i]."_";
 			} return $nomeAlterado;
 
-			.".$extensao";
-			$caminho = $pasta.$novoNome;
+			echo $nomeAlterado;
+
+		} else {
+			echo "deu ERO";
+		}
+	}	
+			
+
+			// $caminho = $pasta.$novoNome;
 
 			//var_dump( is_writable("arquivo/") ); //informe oque retornar desse dump
   			//echo '<br />',$caminho;
 			//echo $novoNome;
-			// echo $caminho;
+			//echo $caminho;
 			//var_dump($_FILES);
 
-			if (move_uploaded_file($temporario,$caminho)) {
+/*			if (move_uploaded_file($temporario,$caminho)) {
 
 				try{
 
@@ -68,5 +76,5 @@
 		// echo $extensao;
 
 		// var_dump($_FILES);
-	}
+	}*/
 ?>
