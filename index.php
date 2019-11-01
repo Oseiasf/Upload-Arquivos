@@ -11,10 +11,10 @@
 </head>
 <body>
 	<form action="salvarArquivo.php" method="POST" enctype="multipart/form-data">
-		<input name="motivo" id="motivo" placeholder="Insira o motivo..." type="text">
-<input name = "nomeArquivo" id="motivo" placeholder="Insira o motivo..." type="text">
-<input name="motivo" id="motivo" placeholder="Insira o motivo..." type="text">
-<input name="motivo" id="motivo" placeholder="Insira o motivo..." type="file">
+		
+<input name = "nomeArquivo" id="motivo" placeholder="Insira o nome do arquivo..." type="text">
+<input name="arquivo" id="motivo" placeholder="Insira o arquivo" type="file">
+<input type="submit">
     </form>
   </div>
 
